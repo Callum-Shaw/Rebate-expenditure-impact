@@ -75,7 +75,7 @@ ui <- fluidPage(
 
 server <- function(input, output) {
     output$txtOutput = renderText({
-        paste0("Every dollar of rebate expenditure generates an extra $",round(estimated_impact(input$q1,input$q2,input$q3,input$q4),4)," of private contributions for healthcare.")
+        paste0("Every dollar of rebate expenditure generates an extra $",round(estimated_impact(input$q1,input$q2,input$q3,input$q4),2)," of private contributions for healthcare.")
     })
 }
 
