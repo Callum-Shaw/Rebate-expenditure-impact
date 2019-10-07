@@ -42,14 +42,15 @@ extras_spend <- data %>%
 total_spend <- data %>%
   filter(Area == "Total health expenditure")
 
+## Total rebates - q2*Extras
 Rebate    <- total_spend$Rebate - as.numeric(q2)*extras_spend$rebate_extras 
+## Total insurance - q3*Extras - q4*Out of Pocket - admin adjustment
+## Admin Adjustment = (Insurance Admin Proportion - Total Admin Proportion)*Insurance Admin
 Insurance <- (total_spend$Insurance - 
                 as.numeric(q3)*extras_spend$insurance_extras + 
                 as.numeric(q4)*OOP_spend -
-                (admin$Insurance/total_spend$Insurance - admin$Total/total_spend$Total) * total_spend$Insurance) 
+                (admin$Insurance/total_spend$Insurance - admin$Total/total_spend$Total) * admin$Insurance) 
 answer    <- ((45-q1)/45)*(Insurance/Rebate)
 return(answer$sum)
 }
-
-(admin$Insurance/total_spend$Insurance - admin$Total/total_spend$Total) * total_spend$Insurance
 
