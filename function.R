@@ -2,8 +2,7 @@ library(tidyverse)
 
 ### Data cleaning
 aihw_hwe_77_data_tables <- read_excel("C:/Users/CSSHAW/Dropbox (Grattan Institute)/Pub Pte efficiency/Shiny App/Data/aihw-hwe-77-data-tables.xls", 
-                                      sheet = "Table A3", range = "A4:N25", 
-                                      na = c(". .","—")) 
+                                      sheet = "Table A3", range = "A4:N25", na = ". .") 
 aihw_hwe_77_data_tables[aihw_hwe_77_data_tables == "—"] <- 0
 data <- aihw_hwe_77_data_tables %>%
   mutate(Area = `Area of expenditure`,
