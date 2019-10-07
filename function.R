@@ -49,7 +49,7 @@ Rebate    <- total_spend$Rebate - as.numeric(q2)*extras_spend$rebate_extras
 Insurance <- (total_spend$Insurance - 
                 as.numeric(q3)*extras_spend$insurance_extras + 
                 as.numeric(q4)*OOP_spend -
-                (admin$Insurance/total_spend$Insurance - admin$Total/total_spend$Total) * admin$Insurance) 
+                (admin$Insurance/total_spend$Insurance - admin$Total/total_spend$Total) * total_spend$Insurance) 
 answer    <- ((45-q1)/45)*(Insurance/Rebate)
 return(answer$sum)
 }
